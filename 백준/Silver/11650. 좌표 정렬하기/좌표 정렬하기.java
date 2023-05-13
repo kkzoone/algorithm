@@ -1,24 +1,23 @@
-import java.util.*;
+import java.io.*;
+import java.util.Arrays;
+import java.util.StringTokenizer;
 
 public class Main {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int count = sc.nextInt(); // 반복 횟수;
+    public static void main(String[] args) throws IOException{
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        int[][] arr = new int[count][2]; // x , y 좌표 담을 공간
+        int num = Integer.parseInt(br.readLine());
 
-        for (int i = 0; i < count; i++) {
-            int x = sc.nextInt();
-            int y = sc.nextInt();
-
-            arr[i][0] = x;
-            arr[i][1] = y;
-
+        int [][] arr = new int[num][2];
+        for (int i = 0; i < num; i++) {
+            StringTokenizer st = new StringTokenizer(br.readLine());
+            arr[i][0] = Integer.parseInt(st.nextToken());
+            arr[i][1] = Integer.parseInt(st.nextToken());
         }
 
-        Arrays.sort(arr, (a, b) -> a[0] == b[0] ? a[1] - b[1] : a[0] - b[0]);
+        Arrays.sort(arr, (o1, o2) -> (o1[0] == o2[0]) ? o1[1] -o2[1] : o1[0] - o2[0]);
 
-        for (int i = 0; i < count; i++) {
+        for (int i = 0; i < num; i++) {
             System.out.println(arr[i][0] + " " + arr[i][1]);
         }
     }
